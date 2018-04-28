@@ -6,6 +6,7 @@ import txs from "./texas.json";
 import mi from "./michigan.json";
 import michigan from "./michigan.json";
 import county from "./country.json";
+import stores from "./stores.json";
 
 var info = L.control();
 export default class MapView extends Component {
@@ -85,29 +86,38 @@ export default class MapView extends Component {
     this.displayLegend();
   }
   addStateMap(stateName) {
-    const _stateName = stateName.toLowerCase();  
+    const _stateName = stateName.toLowerCase();
     //console.log(_stateName)
     //console.log(Object[_stateName])
     //fetch(`${_stateName}.json`).then(function(response) {return response;}).then(function(myJson) {console.log(myJson);});
-    
 
-    L.geoJSON(txs.features, {
+    L.geoJSON(michigan.features, {
       onEachFeature: (feature, layer) => this.onEachStateFeature(feature, layer)
     }).addTo(this.refs.map.leafletElement);
     this.addTileLayer();
     let crumbs = this.state.crumbs;
-    crumbs.push("Texas");
+    crumbs.push("Michigan");
     this.setState({ crumbs: crumbs });
     this.buildCrumbs();
   }
+  markerIcon(content, latlng) {
+    return L.divIcon({
+      className: "my-div-icon",
+      html: String(content)
+    });
+  }
   addPointers() {
-    var geojsonMarkerOptions = {};
-    L.geoJSON(county.features, {
-      pointToLayer: function(feature, latlng) {
-        return L.marker(latlng, geojsonMarkerOptions);
+    L.geoJSON(stores.features, {
+      pointToLayer: (feature, latlng) => {
+        const { properties } = feature;  
+        let popContent = `<h5>${properties.name}</h5>${properties.street} <br> ${properties.city}, ${properties.state}, ${properties.zip}`  
+        return L.marker(latlng, {
+          icon: this.markerIcon(feature.properties.id, latlng)
+        }).bindPopup(
+            popContent
+        );
       }
     }).addTo(this.refs.map.leafletElement);
-    //L.geoJSON(county.features).addTo(this.refs.map.leafletElement);
     this.addTileLayer();
 
     let crumbs = this.state.crumbs;

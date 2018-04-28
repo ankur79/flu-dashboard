@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Local Pharmacy",
+        "street": "4501 WOODWARD AVE",
+        "city": "DETROIT",
+        "state": "MI",
+        "zip": "48201",
+        "phone": "313-230-2170"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-83.0624533, 42.3534125]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Total Pharmacy",
+        "street": "6331 E JEFFERSON AVE",
+        "city": "DETROIT",
+        "state": "MI",
+        "zip": "48207",
+        "phone": "313-567-4239"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-83.0095321, 42.3444122]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Super Pharmacy",
+        "street": "13601 W WARREN AVE",
+        "city": "DETROIT",
+        "state": "MI",
+        "zip": "48126",
+        "phone": "313-624-9530"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-83.1775447, 42.3435202]
+      }
+    }
+  ]
+}
