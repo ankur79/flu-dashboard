@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import L from "leaflet";
 import GEOJSON from "./stateData.json";
@@ -17,12 +18,14 @@ export default class MapView extends Component {
     data: [],
     stateData: [],
     defaultView: "country",
-    crumbs: ["USA"]
+    crumbs: ["USA"],
+    show: false
   };
   componentDidMount() {
     this.addCountryMap();
     this.addTileLayer();
   }
+
   getColor(d) {
     return d > 1000
       ? "#800026"
@@ -106,11 +109,39 @@ export default class MapView extends Component {
       html: String(content)
     });
   }
+  localFunc(){
+      console.log("POP")
+  }
+  popContent(props){
+    const { properties } = props;
+    const t = (modalContent) => {
+        this.props.handleShow(modalContent)
+    }
+    L.thorsten={};
+    L.thorsten.t = t;
+    const htmlStr = `<div>
+                        <h5>${properties.name}</h5>
+                        <div>${properties.street}</div>
+                        <div>${properties.city}, ${properties.state}, ${properties.zip}</div>
+                        <div>
+                            <select>
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                            </select>
+                        </div>
+                        <div>
+                            <a nohref onclick="L.thorsten.t('table')">Table</a> | 
+                            <a nohref onclick="L.thorsten.t('chart')">Chart</a> | 
+                            <a nohref onclick="L.thorsten.t(''metrics)">Metrics</a>
+                        </div>
+                    </div>`
+    return htmlStr            
+  }
   addPointers() {
     L.geoJSON(stores.features, {
       pointToLayer: (feature, latlng) => {
         const { properties } = feature;  
-        let popContent = `<h5>${properties.name}</h5>${properties.street} <br> ${properties.city}, ${properties.state}, ${properties.zip}`  
+        let popContent = this.popContent(feature);
         return L.marker(latlng, {
           icon: this.markerIcon(feature.properties.id, latlng)
         }).bindPopup(
@@ -211,6 +242,11 @@ export default class MapView extends Component {
   }
   render() {
     const position = [this.state.lat, this.state.lng];
-    return <Map center={position} zoom={this.state.zoom} ref="map" />;
+    return (
+        <React.Fragment>
+
+            <Map center={position} zoom={this.state.zoom} ref="map" />
+        </React.Fragment>
+    )
   }
 }
