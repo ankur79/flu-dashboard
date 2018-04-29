@@ -1,6 +1,9 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import ModalTable from './ModalTable';
+import ModalChart from './ModalChart';
+import csvjson from './csvjson.json';
+import metrics from './metrics.json';
 class ModalContent extends React.Component{
     render(){
         const { contentType } = this.props;
@@ -12,11 +15,11 @@ class ModalContent extends React.Component{
                 <Modal.Body>
                     {
                         contentType === 'table' ?
-                            <div><ModalTable/></div> :
+                            <div><ModalTable data={csvjson}/></div> :
                         contentType === 'chart' ?
-                            <div>chart</div> :
+                            <div><ModalChart/></div> :
                         contentType === 'metrics' ?
-                            <div>metrics</div> :
+                            <div><ModalTable data={metrics}/></div> :
                         ""
                     }
                 </Modal.Body>

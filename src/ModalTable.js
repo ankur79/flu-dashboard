@@ -1,21 +1,21 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import csvjson from './csvjson.json';
 
 class ModalTable extends React.Component{
     render(){
+        const { data } = this.props;
         return(
             <Table striped bordered condensed hover>
                 <thead>
                     <tr>
                         {
-                            Object.keys(csvjson[0]).map((item, index) => <th key={index}>{item}</th>)
+                            Object.keys(data[0]).map((item, index) => <th key={index}>{item}</th>)
                         }
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        csvjson.map((item, index) => {
+                        data.map((item, index) => {
                             return(
                                 <tr key={index}>
                                     {

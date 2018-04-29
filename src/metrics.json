@@ -1,0 +1,30 @@
+[
+  {
+    "Key Metrics": "Service Level Improvement",
+    "Current": "53.85%",
+    "Kusari": "82.69%",
+    "Absolute Improvement": "29%",
+    "% Improvement": "54%"
+  },
+  {
+    "Key Metrics": "Reduction in Returns",
+    "Current": 500,
+    "Kusari": 128,
+    "Absolute Improvement": 372,
+    "% Improvement": "74%"
+  },
+  {
+    "Key Metrics": "StockOut Reduction",
+    "Current": 24,
+    "Kusari": 9,
+    "Absolute Improvement": 15,
+    "% Improvement": "63%"
+  },
+  {
+    "Key Metrics": "Shipment Reduction",
+    "Current": 34,
+    "Kusari": 16,
+    "Absolute Improvement": 18,
+    "% Improvement": "53%"
+  }
+]

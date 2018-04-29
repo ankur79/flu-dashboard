@@ -119,20 +119,23 @@ export default class MapView extends Component {
     }
     L.thorsten={};
     L.thorsten.t = t;
-    const htmlStr = `<div>
-                        <h5>${properties.name}</h5>
-                        <div>${properties.street}</div>
-                        <div>${properties.city}, ${properties.state}, ${properties.zip}</div>
-                        <div>
+    const htmlStr = `<div class="container">
+                        <div class="row pop-pad">
+                            <h4>${properties.name}</h4>
+                            <div class="pop-address">${properties.street}</div>
+                            <div class="pop-address">${properties.city}, ${properties.state}, ${properties.zip}</div>
+                        </div>
+                        <div class="row pop-address pop-pad">
+                            <b>Flu Season</b>
                             <select>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
+                                <option>2018-2019</option>
+                                <option>2017-2018</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="row pop-address">
                             <a nohref onclick="L.thorsten.t('table')">Table</a> | 
                             <a nohref onclick="L.thorsten.t('chart')">Chart</a> | 
-                            <a nohref onclick="L.thorsten.t(''metrics)">Metrics</a>
+                            <a nohref onclick="L.thorsten.t('metrics')">Metrics</a>
                         </div>
                     </div>`
     return htmlStr            

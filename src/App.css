@@ -54,3 +54,15 @@
 .custom-modal{
   width: 90%;
 }
+
+.pop-address{
+  font-size: 14px;
+}
+
+.pop-address a{
+  cursor: pointer;
+}
+
+.pop-pad{
+  padding-bottom: 10px;
+}

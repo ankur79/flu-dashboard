@@ -17,7 +17,7 @@ class App extends Component {
   handleClose(){
     this.setState({ show: false, modalContent: "" });
   }
-  handleShow = (modalContent) => {
+  handleShow = (modalContent, properties) => {
     this.setState({ show: true, modalContent: modalContent }, ()=>{
       //
     });
@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="static-modal">
-            <Modal show={this.state.show} dialogClassName={modalContent  === 'table' ? "custom-modal" : ""} onHide={()=>this.handleClose()}>
+            <Modal show={this.state.show} dialogClassName="custom-modal" onHide={()=>this.handleClose()}>
               <ModalContent contentType={this.state.modalContent}/>
             </Modal>
           </div>
